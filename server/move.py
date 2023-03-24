@@ -19,14 +19,14 @@ Motor_A_Pin2  = 15
 Motor_B_Pin1  = 27
 Motor_B_Pin2  = 18
 
-Dir_forward   = 0
-Dir_backward  = 1
+Dir_forward   = 1
+Dir_backward  = 0
 
-left_forward  = 0
-left_backward = 1
+left_forward  = 1
+left_backward = 0
 
-right_forward = 0
-right_backward= 1
+right_forward = 1
+right_backward= 0
 
 pwn_A = 0
 pwm_B = 0
@@ -98,7 +98,7 @@ def motor_right(status, direction, speed):#Motor 1 positive and negative rotatio
 
 def move(speed, direction, turn, radius=0.6):   # 0 < radius <= 1  
 	#speed = 100
-	if direction == 'forward':
+	if direction == 'backward':
 		if turn == 'right':
 			motor_left(0, left_backward, int(speed*radius))
 			motor_right(1, right_forward, speed)
@@ -108,7 +108,7 @@ def move(speed, direction, turn, radius=0.6):   # 0 < radius <= 1
 		else:
 			motor_left(1, left_forward, speed)
 			motor_right(1, right_forward, speed)
-	elif direction == 'backward':
+	elif direction == 'forward':
 		if turn == 'right':
 			motor_left(0, left_forward, int(speed*radius))
 			motor_right(1, right_backward, speed)
@@ -148,4 +148,5 @@ if __name__ == '__main__':
 		destroy()
 	except KeyboardInterrupt:
 		destroy()
+
 
