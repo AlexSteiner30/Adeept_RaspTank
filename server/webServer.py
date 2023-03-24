@@ -230,10 +230,11 @@ def robotCtrl(command_input, response):
 
 
     elif 'lookleft' == command_input:
-        P_sc.singleServo(14, -1, 3)
+        H1_sc.singleServo(12, 1, 7)
+	#P_sc.singleServo(14, -1, 3)
 
     elif 'lookright' == command_input:
-        P_sc.singleServo(14, 1, 3)
+        H1_sc.singleServo(12, -1, 7)
 
     elif 'LRstop' in command_input:
         P_sc.stopWiggle()
@@ -251,26 +252,23 @@ def robotCtrl(command_input, response):
 
     elif 'handup' == command_input:
         # H1_sc.singleServo(12, 1, 7)
-        
-        H2_sc.singleServo(13, -1, 7)
+        H2_sc.singleServo(13, 1, 7)
 
     elif 'handdown' == command_input:
         # H1_sc.singleServo(12, -1, 7)
-
-        H2_sc.singleServo(13, 1, 7)
+        H2_sc.singleServo(13, -1, 7)
 
     elif 'HAstop' in command_input:
         # H1_sc.stopWiggle()
         H2_sc.stopWiggle()
 
     elif 'armup' == command_input:
-        H1_sc.singleServo(12, 1, 7)
-        
+        P_sc.singleServo(14, -1, 3)
         # H2_sc.singleServo(13, 1, 7)
 
     elif 'armdown' == command_input:
-        H1_sc.singleServo(12, -1, 7)
-
+        # H1_sc.singleServo(12, -1, 7)
+        P_sc.singleServo(14, 1, 3)
         # H2_sc.singleServo(13, -1, 7)
 
     elif 'Armstop' in command_input:
@@ -559,3 +557,4 @@ if __name__ == '__main__':
         print(e)
         RL.setColor(0,0,0)
         move.destroy()
+
