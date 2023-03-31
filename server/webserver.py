@@ -1,4 +1,3 @@
-#!/usr/bin/env/python
 # File name   : server.py
 # Production  : GWR
 # Website     : www.adeept.com
@@ -276,10 +275,10 @@ def robotCtrl(command_input, response):
         # H2_sc.stopWiggle()
 
     elif 'grab' == command_input:
-        G_sc.singleServo(15, 1, 3)
+        G_sc.singleServo(15, 1, 3, True)
 
     elif 'loose' == command_input:
-        G_sc.singleServo(15, -1, 3)
+        G_sc.singleServo(15, -1, 3, False)
 
     elif 'stop' == command_input:
         G_sc.stopWiggle()
@@ -532,8 +531,7 @@ if __name__ == '__main__':
         RL.start()
         RL.breath(70,70,255)
     except ModuleNotFoundError as e:
-        print('Use "sudo pip3 install rpi_ws281x" to install WS_281x package\nä½¿ç¨"sudo pip3 install rpi_ws281x"å½ä»¤æ	è£
-rpi_ws281x')
+        print("Module not found")
         pass
 
     while  1:

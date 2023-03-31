@@ -240,17 +240,22 @@ class ServoCtrl(threading.Thread):
 
 
 	def singleServo(self, ID, direcInput, speedSet, limit=False):
-		if  limit == True and self.nowPos[len(self.nowPos) - 1] > 297  and self.nowPos[len(self.nowPos) - 1]  < 302:
-			pass
-		else:
-			self.posUpdate()
-			self.resume()
+		if (limit == True):
+			if ( not self.nowPos[len(self.nowPos) - 1] > 295 and not self.nowPos[len(self.nowPos) - 1] > 305):
+				     self.wiggleID = ID
+                self.wiggleDirection = direcInput
+                self.scSpeed[ID] = speedSet
+                self.scMode = 'wiggle'
+                self.posUpdate()
+                self.resume()
+                print(self.nowPos[len(self.nowPos) - 1])
 
 		self.wiggleID = ID
 		self.wiggleDirection = direcInput
 		self.scSpeed[ID] = speedSet
 		self.scMode = 'wiggle'
-
+		self.posUpdate()
+		self.resume()
 		print(self.nowPos[len(self.nowPos) - 1])
 
 	def moveAngle(self, ID, angleInput):
